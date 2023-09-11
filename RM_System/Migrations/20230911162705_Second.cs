@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RM_System.Migrations
 {
     /// <inheritdoc />
-    public partial class Initialmigration : Migration
+    public partial class Second : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace RM_System.Migrations
                     ID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Size = table.Column<int>(type: "int", nullable: false),
+                    Size = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -29,13 +29,13 @@ namespace RM_System.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "jobs",
+                name: "Jobs",
                 columns: table => new
                 {
                     ID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Level = table.Column<int>(type: "int", nullable: false),
+                    Level = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CompanyId = table.Column<long>(type: "bigint", nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -43,9 +43,9 @@ namespace RM_System.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_jobs", x => x.ID);
+                    table.PrimaryKey("PK_Jobs", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_jobs_Companies_CompanyId",
+                        name: "FK_Jobs_Companies_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "ID",
@@ -53,7 +53,7 @@ namespace RM_System.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "candidates",
+                name: "Candidates",
                 columns: table => new
                 {
                     ID = table.Column<long>(type: "bigint", nullable: false)
@@ -71,23 +71,23 @@ namespace RM_System.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_candidates", x => x.ID);
+                    table.PrimaryKey("PK_Candidates", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_candidates_jobs_JobId",
+                        name: "FK_Candidates_Jobs_JobId",
                         column: x => x.JobId,
-                        principalTable: "jobs",
+                        principalTable: "Jobs",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_candidates_JobId",
-                table: "candidates",
+                name: "IX_Candidates_JobId",
+                table: "Candidates",
                 column: "JobId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_jobs_CompanyId",
-                table: "jobs",
+                name: "IX_Jobs_CompanyId",
+                table: "Jobs",
                 column: "CompanyId");
         }
 
@@ -95,10 +95,10 @@ namespace RM_System.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "candidates");
+                name: "Candidates");
 
             migrationBuilder.DropTable(
-                name: "jobs");
+                name: "Jobs");
 
             migrationBuilder.DropTable(
                 name: "Companies");

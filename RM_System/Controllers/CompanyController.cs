@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RM_System.Core.Context;
-using RM_System.Core.Dtos.Candidate;
+using RM_System.Core.Dtos.Company;
 using RM_System.Core.Entity;
 
 namespace RM_System.Controllers
@@ -21,7 +21,7 @@ namespace RM_System.Controllers
         {
             _context = context;
             _mapper = mapper;
-            
+
         }
 
         [HttpPost]
@@ -33,6 +33,16 @@ namespace RM_System.Controllers
             await _context.SaveChangesAsync();
 
             return Ok("New Company Added Successfully ");
+        }
+
+        [HttpGet]
+        [Route("Get")]
+        public async Task<ActionResult<IEnumerable<Company>>> GetCompanies()
+        {
+            var companies = await _context.Companies.ToListAsync();
+            var convertedCompanies = _mapper.Map<IEnumerable<CompanyGetDto>>(companies);   
+
+            return Ok(convertedCompanies);
         }
     }
 }

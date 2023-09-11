@@ -70,7 +70,7 @@ namespace RM_System.Migrations
 
                     b.HasIndex("JobId");
 
-                    b.ToTable("candidates");
+                    b.ToTable("Candidates");
                 });
 
             modelBuilder.Entity("RM_System.Core.Entity.Company", b =>
@@ -135,7 +135,7 @@ namespace RM_System.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("jobs");
+                    b.ToTable("Jobs");
                 });
 
             modelBuilder.Entity("RM_System.Core.Entity.Candidate", b =>

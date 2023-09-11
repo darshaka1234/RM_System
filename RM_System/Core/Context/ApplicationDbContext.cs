@@ -11,8 +11,8 @@ namespace RM_System.Core.Context
         }
 
         public DbSet<Company> Companies { get; set; }
-        public DbSet<Job> jobs { get; set; }
-        public DbSet<Candidate> candidates { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Candidate> Candidates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

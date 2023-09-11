@@ -12,8 +12,8 @@ using RM_System.Core.Context;
 namespace RM_System.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230911082915_Update-type")]
-    partial class Updatetype
+    [Migration("20230911162705_Second")]
+    partial class Second
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,7 +73,7 @@ namespace RM_System.Migrations
 
                     b.HasIndex("JobId");
 
-                    b.ToTable("candidates");
+                    b.ToTable("Candidates");
                 });
 
             modelBuilder.Entity("RM_System.Core.Entity.Company", b =>
@@ -138,7 +138,7 @@ namespace RM_System.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("jobs");
+                    b.ToTable("Jobs");
                 });
 
             modelBuilder.Entity("RM_System.Core.Entity.Candidate", b =>
