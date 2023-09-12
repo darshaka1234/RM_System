@@ -371,15 +371,3 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-RMS_client/node_modules
-RMS_client/dist
-RMS_client/dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
